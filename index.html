@@ -1,0 +1,38 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WS Open</title>
+</head>
+
+<body>
+
+    <div>
+        <input id="numb" type="text">
+        <button onClick="openWs()">Abrir whatsapp</button>
+    </div>
+
+    <script type="text/javascript">
+        function openWs() {
+            let numb = document.getElementById('numb').value
+
+            numb = numb.replace(/\s/g, '');
+            numb = numb.replace('-', '')
+            numb = numb.replace('+', '')
+            numb = numb.replace('(', '')
+            numb = numb.replace(')', '')
+
+            if (numb.startsWith('0')) numb = numb.slice(1)
+            if (numb.startsWith('5490')) numb = numb.slice(4)
+
+            let prefix = numb.startsWith('549') ? '' : '549'
+
+            window.open('https://wa.me/' + prefix + numb)
+        }
+    </script>
+
+</body>
+
+</html>
