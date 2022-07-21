@@ -1,38 +1,64 @@
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WS Open</title>
-</head>
 
-<body>
+    <style>
+      .main {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 30px 10px;
+      }
 
-    <div>
-        <input id="numb" type="text">
-        <button onClick="openWs()">Abrir whatsapp</button>
+      .numb {
+        border-radius: 5px;
+        padding: 10px;
+        border: 1px solid grey;
+      }
+
+      .btn {
+        background-color: white;
+        border: 1px solid green;
+        border-radius: 20px;
+        color: green;
+        padding: 10px;
+        text-transform: uppercase;
+      }
+
+      @media (min-width: 1000px) {
+        .main {
+          padding: 100px 400px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main">
+      <input class="numb" id="numb" type="text" />
+      <button class="btn" onClick="openWs()">Abrir whatsapp</button>
     </div>
 
     <script type="text/javascript">
-        function openWs() {
-            let numb = document.getElementById('numb').value
+      function openWs() {
+        let numb = document.getElementById("numb").value;
 
-            numb = numb.replace(/\s/g, '');
-            numb = numb.replace('-', '')
-            numb = numb.replace('+', '')
-            numb = numb.replace('(', '')
-            numb = numb.replace(')', '')
+        numb = numb.replace(/\s/g, "");
+        numb = numb.replace("-", "");
+        numb = numb.replace("+", "");
+        numb = numb.replace("(", "");
+        numb = numb.replace(")", "");
 
-            if (numb.startsWith('0')) numb = numb.slice(1)
-            if (numb.startsWith('5490')) numb = numb.slice(4)
+        if (numb.startsWith("0")) numb = numb.slice(1);
+        if (numb.startsWith("5490")) numb = numb.slice(4);
 
-            let prefix = numb.startsWith('549') ? '' : '549'
+        let prefix = numb.startsWith("549") ? "" : "549";
 
-            window.open('https://wa.me/' + prefix + numb)
-        }
+        window.open("https://wa.me/" + prefix + numb);
+      }
     </script>
-
-</body>
-
+  </body>
 </html>
